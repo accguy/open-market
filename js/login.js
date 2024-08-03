@@ -3,6 +3,8 @@ const $inputId = document.querySelector(".input-id");
 const $inputPw = document.querySelector(".input-pw");
 const $loginBtn = document.querySelector(".login-btn");
 const $p = document.createElement("p");
+const $buyerBtn = document.querySelector(".buyer-btn");
+const $sellerBtn = document.querySelector(".seller-btn");
 
 // 페이지 로딩시 id에 포커스
 window.onload = function () {
@@ -26,6 +28,18 @@ $loginBtn.addEventListener("click", (e) => {
   }
 });
 
+let loginType = "BUYER";
+// 판매 회원으로 로그인 클릭시 이벤트
+$sellerBtn.addEventListener("click", () => {
+  loginType = "SELLER";
+  console.log(loginType);
+});
+// 구매 회원으로 로그인 클릭시 이벤트
+$buyerBtn.addEventListener("click", () => {
+  loginType = "BUYER";
+  console.log(loginType);
+});
+
 // 인풋창에 다시 입력 시작 시 오류메시지 삭제
 $inputId.addEventListener("input", (e) => {
   $p.remove();
@@ -45,7 +59,7 @@ const login = async () => {
     body: JSON.stringify({
       username: $inputId.value,
       password: $inputPw.value,
-      login_type: `BUYER`,
+      login_type: loginType,
     }),
   });
 
