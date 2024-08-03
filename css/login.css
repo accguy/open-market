@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "SpoqaHanSansNeo-Medium";
+  src: url("../font/SpoqaHanSansNeo-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "SpoqaHanSansNeo-Regular";
+  src: url("../font/SpoqaHanSansNeo-Regular.woff") format("woff");
+}
+
+.header-logo {
+  margin: 100px auto;
+  display: block;
+  width: 238px;
+  height: 74px;
+}
+
+.header-logo > img {
+  width: 100%;
+  height: 100%;
+}
+
+.login-container {
+  margin: auto;
+  width: 550px;
+  height: 352px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 10px;
+  border: 1px solid #c4c4c4;
+  border-top: none;
+}
+
+.member-selection {
+  width: 100%;
+  height: 62px;
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.member-selection button {
+  width: 50%;
+  height: 62px;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid #c4c4c4;
+  font-size: 18px;
+  font-family: "SpoqaHanSansNeo-Regular";
+  font-weight: bold;
+}
+
+.member-selection button:nth-child(1) {
+  border-bottom: none;
+  border-left: none;
+}
+.member-selection button:nth-child(2) {
+  background-color: #f2f2f2;
+  border-right: none;
+}
+
+input {
+  width: 480px;
+  height: 60px;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  font-size: 16px;
+}
+
+.input-id {
+  margin-bottom: 6px;
+}
+
+.login-btn {
+  background-color: #21bf48;
+  border: none;
+  border-radius: 5px;
+  padding: 19px 215px;
+  margin-top: 36px;
+
+  color: #fff;
+  font-size: 18px;
+  font-family: "SpoqaHanSansNeo-Medium";
+}
+
+.additional-links {
+  margin: 30px auto;
+  width: fit-content;
+  color: #333333;
+  display: flex;
+
+  font-family: "SpoqaHanSansNeo-Regular";
+  font-weight: 100;
+}
+
+.additional-links > a:first-child:after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  margin: 0 14px;
+  background-color: #333333;
+}
+.additional-links > a:last-child:after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 15px;
+  background-color: #ffffff00;
+}
