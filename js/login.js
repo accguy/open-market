@@ -59,32 +59,38 @@ $inputPw.addEventListener("input", (e) => {
 
 // 로그인 요청 함수
 const login = async () => {
-  const res = await fetch("https://openmarket.weniv.co.kr/accounts/login/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      username: $inputId.value,
-      password: $inputPw.value,
-      login_type: loginType,
-    }),
-  });
+  try {
+    const res = await fetch("https://openmarket.weniv.co.kr/accounts/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        username: $inputId.value,
+        password: $inputPw.value,
+        login_type: loginType,
+      }),
+    });
 
-  if (res.ok) {
-    const data = await res.json();
-    localStorage.setItem("authToken", data.token);
-    history.back();
-  } else if (res.status === 401) {
-    const errorData = await res.json();
-    console.log(errorData);
-    $p.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
+    if (res.ok) {
+      const data = await res.json();
+      localStorage.setItem("authToken", data.token);
+      history.back();
+    } else if (res.status === 401) {
+      const errorData = await res.json();
+      console.log(errorData);
+      $p.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
+      $inputPw.after($p);
+      $inputPw.value = null;
+      $inputPw.focus();
+    } else {
+      const errorData = await res.json();
+      console.log(errorData);
+    }
+  } catch (error) {
+    console.error("로그인 요청 중 오류 발생:", error);
+    $p.innerText = "로그인 중 오류가 발생했습니다.";
     $inputPw.after($p);
-    $inputPw.value = null;
-    $inputPw.focus();
-  } else {
-    const errorData = await res.json();
-    console.log(errorData);
   }
 };
