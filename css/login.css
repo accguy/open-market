@@ -8,7 +8,7 @@
 }
 
 .header-logo {
-  margin: 100px auto;
+  margin: 100px auto 70px;
   display: block;
   width: 238px;
   height: 74px;
@@ -22,7 +22,6 @@
 .login-container {
   margin: auto;
   width: 550px;
-  height: 352px;
 
   display: flex;
   flex-direction: column;
@@ -31,6 +30,7 @@
   border-radius: 10px;
   border: 1px solid #c4c4c4;
   border-top: none;
+  padding-bottom: 36px;
 }
 
 .member-selection {
@@ -48,15 +48,19 @@
   font-size: 18px;
   font-family: "SpoqaHanSansNeo-Regular";
   font-weight: bold;
+  background-color: #f2f2f2;
 }
 
 .member-selection button:nth-child(1) {
-  border-bottom: none;
   border-left: none;
 }
 .member-selection button:nth-child(2) {
-  background-color: #f2f2f2;
   border-right: none;
+}
+
+button.active {
+  border-bottom: none;
+  background-color: #fff;
 }
 
 input {
@@ -65,10 +69,14 @@ input {
   border: none;
   border-bottom: 1px solid #c4c4c4;
   font-size: 16px;
+  outline: none;
 }
 
 .input-id {
   margin-bottom: 6px;
+}
+.input-pw {
+  margin-bottom: 26px;
 }
 
 .login-btn {
@@ -76,7 +84,7 @@ input {
   border: none;
   border-radius: 5px;
   padding: 19px 215px;
-  margin-top: 36px;
+  margin-top: 26px;
 
   color: #fff;
   font-size: 18px;
@@ -107,4 +115,12 @@ input {
   width: 1px;
   height: 15px;
   background-color: #ffffff00;
+}
+
+.error-message {
+  color: #eb5757;
+  font-family: "SpoqaHanSansNeo-Regular";
+  align-self: flex-start;
+  display: block;
+  margin-left: 35px;
 }
