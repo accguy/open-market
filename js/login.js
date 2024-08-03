@@ -5,6 +5,7 @@ const $loginBtn = document.querySelector(".login-btn");
 const $p = document.createElement("p");
 const $buyerBtn = document.querySelector(".buyer-btn");
 const $sellerBtn = document.querySelector(".seller-btn");
+const $memberBtns = [$buyerBtn, $sellerBtn];
 
 // 페이지 로딩시 id에 포커스
 window.onload = function () {
@@ -38,6 +39,14 @@ $sellerBtn.addEventListener("click", () => {
 $buyerBtn.addEventListener("click", () => {
   loginType = "BUYER";
   console.log(loginType);
+});
+
+// 구매자, 판매자 선택시 버튼 스타일 변경 이벤트
+$memberBtns.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    document.querySelector(".active").classList.remove("active");
+    button.classList.add("active");
+  });
 });
 
 // 인풋창에 다시 입력 시작 시 오류메시지 삭제

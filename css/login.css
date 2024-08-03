@@ -48,15 +48,19 @@
   font-size: 18px;
   font-family: "SpoqaHanSansNeo-Regular";
   font-weight: bold;
+  background-color: #f2f2f2;
 }
 
 .member-selection button:nth-child(1) {
-  border-bottom: none;
   border-left: none;
 }
 .member-selection button:nth-child(2) {
-  background-color: #f2f2f2;
   border-right: none;
+}
+
+button.active {
+  border-bottom: none;
+  background-color: #fff;
 }
 
 input {
