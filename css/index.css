@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "SpoqaHanSansNeo-Medium";
-  src: url("../font/SpoqaHanSansNeo-Medium.woff") format("woff");
-}
-@font-face {
   font-family: "SpoqaHanSansNeo-Regular";
   src: url("../font/SpoqaHanSansNeo-Regular.woff") format("woff");
 }
@@ -11,33 +7,29 @@
   src: url("../font/SpoqaHanSansNeo-Bold.woff") format("woff");
 }
 
-.product-display {
-  padding: 4.2% 16.8%;
-  /* background-color: antiquewhite; */
-}
-.product-list {
-  /* background-color: aquamarine; */
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0px 70px;
-}
-
 .main-banner {
   background-color: #f2f2f2;
   height: 500px;
 }
 
+.product-display {
+  padding: 4.2% 16.8%;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0px 70px;
+}
+
 .product-item {
-  /* background-color: gold; */
-  width: 30%;
+  width: 100%;
   margin-bottom: 78px;
-  flex: 1 0 300px;
 }
 
 .product-img {
   width: 100%;
   aspect-ratio: 1/1;
+  object-fit: cover;
   border-radius: 10px;
   border: 1px solid #c4c4c4;
 }
