@@ -26,7 +26,7 @@ const rederItem = (product) => {
   $productImg.src = product.image;
   $storeName.innerText = product.store_name;
   $productName.innerText = product.product_name;
-  $price.innerText = product.price;
+  $price.innerText = product.price.toLocaleString();
 
   $product.classList.add("product-item");
   $productImg.classList.add("product-img");
