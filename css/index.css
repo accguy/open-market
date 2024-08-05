@@ -23,6 +23,11 @@
   gap: 0px 70px;
 }
 
+.main-banner {
+  background-color: #f2f2f2;
+  height: 500px;
+}
+
 .product-item {
   /* background-color: gold; */
   width: 30%;
