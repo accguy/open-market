@@ -95,6 +95,11 @@ header#gnb {
   }
   .logo-search-container {
     align-self: self-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .header-logo {
+    align-self: self-start;
   }
   .nav-bar {
     align-self: self-start;
