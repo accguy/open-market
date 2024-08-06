@@ -88,6 +88,19 @@ header#gnb {
   width: 32px;
   height: 32px;
 }
+
+@media (max-width: 960px) {
+  .header {
+    flex-direction: column-reverse;
+  }
+  .logo-search-container {
+    align-self: self-start;
+  }
+  .nav-bar {
+    align-self: self-start;
+    margin-bottom: 22px;
+  }
+}
 /* 동적으로 추가되는 헤더 부분(끝) */
 
 .main-banner {
