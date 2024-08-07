@@ -134,7 +134,7 @@ a {
 }
 button {
   border: none;
-  padding: none;
+  padding: 0px;
   background: none;
 }
 button:hover {
