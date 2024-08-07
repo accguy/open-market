@@ -136,7 +136,7 @@ header#gnb {
 }
 /* 동적으로 추가되는 헤더 부분(끝) */
 
-#modalContainer.main-banner {
+.main-banner {
   background-color: #f2f2f2;
   height: 500px;
 }
@@ -184,6 +184,21 @@ header#gnb {
   content: "원";
   font-size: 1rem;
   margin-left: 2px;
+}
+
+.pagination {
+  color: #767676;
+  font-family: "SpoqaHanSansNeo-Regular";
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  align-items: baseline;
+}
+
+.page-link:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
 }
 
 footer {
