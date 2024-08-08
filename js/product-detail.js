@@ -47,10 +47,6 @@ const $quantityInput = document.querySelector(".quantity-input");
 const $quantity = document.querySelector(".quantity");
 const $totalPrice = document.querySelector(".total-price");
 
-// 직접 입력해서 수량 변경
-$quantityInput.addEventListener("input", (e) => {
-  updateQuantityAndPrice();
-});
 // 버튼 클릭으로 수량 변경
 $quantityControl.addEventListener("click", (e) => {
   // (-)버튼 클릭시

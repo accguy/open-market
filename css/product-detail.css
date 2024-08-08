@@ -105,6 +105,7 @@ div.product-quantity-section::after {
     border: none;
     text-align: center;
     width: 50px;
+    background-color: #fff;
   }
   .quantity-input::-webkit-outer-spin-button,
   .quantity-input::-webkit-inner-spin-button {
