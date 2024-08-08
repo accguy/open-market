@@ -111,6 +111,7 @@ const addToCart = async (id, quantity) => {
     if (res.ok) {
       const data = await res.json();
       console.log(data);
+      window.location.href = `shopping-cart.html?id=${id}&quantity=${quantity}`;
     } else if (res.status === 401) {
       const errorData = await res.json();
       console.log(errorData);

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cart</title>
+  </head>
+  <body>
+    <h1>cart</h1>
+  </body>
+  <script>
+    // URL에서 쿼리 파라미터를 가져오는 함수
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    // 상품 ID 가져오기
+    const productId = getQueryParam("id");
+    const productQuantity = getQueryParam("quantity");
+    console.log(productId, productQuantity);
+  </script>
+</html>
