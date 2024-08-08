@@ -13,6 +13,7 @@ const $productName = document.querySelector(".product-name");
 const $price = document.querySelector(".price");
 const $shipping = document.querySelector(".shipping");
 let numPrice = 0;
+let numStock = 1;
 
 // 데이터 불러와서 화면에 전체 상품 띄우는 함수
 const getData = async (id) => {
@@ -20,6 +21,7 @@ const getData = async (id) => {
   if (res.ok) {
     const data = await res.json();
     numPrice = data.price;
+    numStock = data.stock;
     displayData(data);
   } else {
     const errorData = await res.json();
@@ -58,7 +60,9 @@ $quantityControl.addEventListener("click", (e) => {
   }
   // (+)버튼 클릭시
   else if (e.target.className === "increase-btn") {
-    $quantityInput.value++;
+    if ($quantityInput.value < numStock) {
+      $quantityInput.value++;
+    }
     updateQuantityAndPrice();
   }
 });
