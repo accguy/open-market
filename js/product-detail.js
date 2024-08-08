@@ -1,3 +1,5 @@
+const authToken = localStorage.getItem("authToken");
+
 // URL에서 쿼리 파라미터를 가져오는 함수
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -83,3 +85,40 @@ $tapMenuBtns.forEach((button) => {
     button.classList.add("active");
   });
 });
+
+const $cartBtn = document.querySelector(".cart-btn");
+// 장바구니에 상품 추가
+$cartBtn.addEventListener("click", (e) => {
+  addToCart(productId, $quantityInput.value);
+});
+
+//  장바구니에 물건 넣기(POST)
+const addToCart = async (id, quantity) => {
+  try {
+    const res = await fetch("https://openmarket.weniv.co.kr/cart/", {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${authToken}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: quantity,
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data);
+    } else if (res.status === 401) {
+      const errorData = await res.json();
+      console.log("errorData");
+    } else {
+      const errorData = await res.json();
+      console.log("errorData");
+    }
+  } catch (error) {
+    console.error("장바구니 추가 요청 중 오류 발생:", error);
+  }
+};
