@@ -119,6 +119,10 @@ const addToCart = async (id, quantity) => {
         console.log("로그인을 해주세요.");
         window.location.href = "login.html";
       }
+    } else if (res.status === 406) {
+      const errorData = await res.json();
+      console.log(errorData);
+      window.alert(errorData.FAIL_message);
     } else {
       const errorData = await res.json();
       console.log(errorData);
