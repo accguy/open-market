@@ -5,45 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>open market</title>
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
-    <header id="gnb">
-      <!-- 여기 아래는 추후 gnb.js로 동적으로 생성할 예정 -->
-      <div class="header">
-        <!-- <h1>HODU</h1> -->
-        <div class="logo-search-container">
-          <a class="header-logo" href="./index.html">
-            <img src="../assets/Logo-hodu.png" alt="HODU" />
-          </a>
-          <div class="seach-bar">
-            <input type="text" placeholder="상품을 검색해보세요!" />
-            <button></button>
-          </div>
-        </div>
-
-        <ul class="nav-bar">
-          <li>
-            <a class="shoping-cart-btn" href="login.html">
-              <img src="./assets/icon-shopping-cart.svg" alt="" /><span
-                >장바구니</span
-              >
-            </a>
-          </li>
-          <li>
-            <a class="login-btn" href="login.html">
-              <img src="./assets/icon-user.svg" alt="" /><span>로그인</span>
-              <div class="modalContainer hidden">
-                <button>마이페이지</button>
-                <button class="logout-btn">로그아웃</button>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </header>
-
+    <header></header>
     <main>
       <section class="main-banner">
         <!-- <h2>메인 배너</h2> -->
@@ -57,8 +24,9 @@
     </main>
     <footer></footer>
 
+    <script src="./js/import_header.js"></script>
+    <script src="./js/import_footer.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/header.js"></script>
-    <script src="./js/import_footer.js"></script>
   </body>
 </html>
