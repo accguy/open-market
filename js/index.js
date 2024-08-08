@@ -28,7 +28,7 @@ const rederItem = (product) => {
   const $productName = document.createElement("p");
   const $price = document.createElement("p");
 
-  // $link.href = "product.html";
+  $link.href = `product-detail.html?id=${product.product_id}`;
   $productImg.src = product.image;
   $storeName.innerText = product.store_name;
   $productName.innerText = product.product_name;

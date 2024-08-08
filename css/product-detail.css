@@ -63,6 +63,12 @@ div.product-info {
     font-size: 36px;
     margin-bottom: 138px;
   }
+  .price::after {
+    content: "원";
+    font-size: 18px;
+    font-family: "SpoqaHanSansNeo-Regular";
+    margin-left: 2px;
+  }
   .shipping {
     color: #767676;
   }
