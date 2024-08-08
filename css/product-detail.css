@@ -75,9 +75,6 @@ div.product-info {
 }
 
 /* flex-2 */
-div.product-quantity-section {
-  /* background-color: rgba(95, 98, 171, 0.599); */
-}
 
 div.product-quantity-section::before,
 div.product-quantity-section::after {
@@ -157,6 +154,11 @@ div.purchase-container {
   .total-price {
     font-size: 36px;
     color: #21bf48;
+  }
+  .total-price::after {
+    content: "원";
+    font-size: 18px;
+    margin-left: 2px;
   }
 }
 .action-buttons {
