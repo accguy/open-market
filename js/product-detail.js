@@ -74,3 +74,12 @@ const updateQuantityAndPrice = () => {
 };
 
 const product = getData(productId);
+
+// 하단 탭메뉴 선택시 색상 변경 이벤트
+const $tapMenuBtns = document.querySelectorAll(".tap-menu button");
+$tapMenuBtns.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    document.querySelector(".active").classList.remove("active");
+    button.classList.add("active");
+  });
+});

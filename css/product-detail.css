@@ -181,13 +181,18 @@ div.purchase-container {
   }
 }
 
-section:last-child {
+.tap-menu {
   padding: 4.2% 16.8% 300px;
   display: flex;
 }
-section:last-child button {
+.tap-menu button {
   flex-grow: 1;
   border-bottom: 6px solid #e0e0e0;
   padding: 19px;
   color: #767676;
+}
+
+.tap-menu button.active {
+  color: #21bf48;
+  border-bottom: 6px solid #21bf48;
 }
