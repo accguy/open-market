@@ -113,10 +113,14 @@ const addToCart = async (id, quantity) => {
       console.log(data);
     } else if (res.status === 401) {
       const errorData = await res.json();
-      console.log("errorData");
+      console.log(errorData);
+      if (!authToken) {
+        console.log("로그인을 해주세요.");
+        window.location.href = "login.html";
+      }
     } else {
       const errorData = await res.json();
-      console.log("errorData");
+      console.log(errorData);
     }
   } catch (error) {
     console.error("장바구니 추가 요청 중 오류 발생:", error);
