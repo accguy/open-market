@@ -9,7 +9,9 @@
 
 main {
   padding: 54px 16.8%;
-  font-family: "SpoqaHanSansNeo-Regular";
+  * {
+    font-family: "SpoqaHanSansNeo-Regular";
+  }
 }
 
 h2 {
@@ -27,6 +29,7 @@ div.top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 35px;
 
   input[type="checkbox"] {
     width: 20px;
@@ -37,31 +40,32 @@ div.top-bar {
     /* border-radius: 50%; */
     margin-left: 30px;
   }
-  span {
-    display: block;
-  }
-  span:nth-child(2) {
-    background-color: tomato;
+
+  div:nth-child(2) {
+    /* background-color: tomato; */
     text-align: center;
     flex-grow: 3;
   }
-  span:nth-child(3) {
-    background-color: yellowgreen;
+  div:nth-child(3) {
+    /* background-color: yellowgreen; */
     text-align: center;
     flex-grow: 2;
   }
-  span:nth-child(4) {
-    background-color: royalblue;
+  div:nth-child(4) {
+    /* background-color: royalblue; */
     text-align: center;
     flex-grow: 1;
   }
 }
 
-.cart-item-list {
+/* 장바구니 물건 리스트 */
+ul.cart-item-list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
+
+/* 물품이 없을 때 표시 */
 .nothing-in-cart {
   text-align: center;
   margin: 200px 0px;
@@ -75,5 +79,148 @@ div.top-bar {
     font-size: 14px;
     color: #767676;
     margin-bottom: 17px;
+  }
+}
+
+/* 장바구니 리스트 아이템 */
+li.cart-item {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    /* appearance: none; */
+    /* border: 2px solid #21bf48; */
+    /* border-radius: 50%; */
+    margin-left: 30px;
+  }
+
+  .img-info-container {
+    /* background-color: tomato; */
+    display: flex;
+    flex-grow: 1.55;
+  }
+  .product-quantity-section {
+    /* background-color: yellowgreen; */
+    align-self: stretch;
+    flex-grow: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .price-order-container {
+    /* background-color: royalblue; */
+    flex-grow: 1;
+    align-self: stretch;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* 상품정보 부분 */
+.img-info-container {
+  img {
+    width: 160px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    margin: 20px 40px 20px 36px;
+  }
+  div.product-info {
+    /* background-color: aquamarine; */
+    padding-top: 26px;
+    width: 200px;
+  }
+  .store-name {
+    font-size: 14px;
+    color: #767676;
+    margin-bottom: 10px;
+  }
+  .product-name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .price {
+    font-family: "SpoqaHanSansNeo-Bold";
+    margin-bottom: 55px;
+  }
+  .shipping {
+    font-size: 14px;
+    color: #767676;
+  }
+}
+
+/* 수량 부분 */
+.product-quantity-controls {
+  background-color: #fff;
+  width: fit-content;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  display: flex;
+
+  .decrease-btn {
+    width: 50px;
+    height: 50px;
+    border-right: 1px solid #c4c4c4;
+    background-image: url(../assets/icon-minus-line.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .quantity-input {
+    border: none;
+    text-align: center;
+    width: 50px;
+    background-color: #fff;
+    font-size: 18px;
+  }
+  .quantity-input::-webkit-outer-spin-button,
+  .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  .increase-btn {
+    width: 50px;
+    height: 50px;
+    border-left: 1px solid #c4c4c4;
+    background-image: url(../assets/icon-plus-line.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+/* 상품금액 부분 */
+.price-order-container {
+  p {
+    font-family: "SpoqaHanSansNeo-Bold";
+    font-size: 18px;
+    color: #eb5757;
+    margin-bottom: 26px;
+  }
+  .order-btn {
+    height: 40px;
+    background-color: #21bf48;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0px 35px;
+    overflow: hidden;
+    max-width: 130px;
+  }
+  .delete-btn {
+    background-image: url("../assets/icon-delete.svg");
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
   }
 }
