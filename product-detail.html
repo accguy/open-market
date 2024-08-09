@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product detail</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/product-detail.css" />
+  </head>
+
+  <body>
+    <header></header>
+
+    <main>
+      <section class="product-overview">
+        <img class="product-img" src="./assets/test.jpg" alt="상품이미지" />
+
+        <div>
+          <div class="product-info">
+            <p class="store-name">백엔드 글로벌</p>
+            <p class="product-name">딥러닝 개발자 무릎 담요</p>
+            <p class="price">17,500</p>
+            <p class="shipping">택배배송 / 무료배송</p>
+          </div>
+
+          <!-- 가상요소로 구분선 넣기 -->
+          <div class="product-quantity-section">
+            <div class="product-quantity-controls">
+              <button class="decrease-btn"></button>
+              <input
+                class="quantity-input"
+                type="number"
+                name="quantity"
+                value="1"
+                disabled
+              />
+              <button class="increase-btn"></button>
+            </div>
+          </div>
+
+          <div class="purchase-container">
+            <div class="purchase-summary">
+              <span class="total-label">총 상품 금액</span>
+              <div class="quantity-price-container">
+                <span class="total-quantity"
+                  >총 수량 <span class="quantity">1</span>개</span
+                >
+                <span class="total-price">17,500</span>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button class="purchase-btn">바로구매</button>
+              <button class="cart-btn">장바구니</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tap-menu">
+        <button class="active">버튼</button>
+        <button>리뷰</button>
+        <button>Q&A</button>
+        <button>반품/교환정보</button>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <script src="./js/import_header.js"></script>
+    <script src="./js/import_footer.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/product-detail.js"></script>
+  </body>
+</html>
