@@ -14,7 +14,7 @@
     <main>
       <h2>장바구니</h2>
       <div class="top-bar">
-        <input type="checkbox" name="select-all" id="" />
+        <input type="checkbox" name="select-all" id="select-all" />
         <span>상품정보</span>
         <span>수량</span>
         <span>상품금액</span>
@@ -27,19 +27,10 @@
       </ul>
     </main>
     <footer></footer>
+
+    <script src="./js/import_header.js"></script>
+    <script src="./js/import_footer.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/shopping-cart.js"></script>
   </body>
-  <script>
-    // URL에서 쿼리 파라미터를 가져오는 함수
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-    // 상품 ID 가져오기
-    const productId = getQueryParam("id");
-    const productQuantity = getQueryParam("quantity");
-    console.log(productId, productQuantity);
-  </script>
-  <script src="./js/import_header.js"></script>
-  <script src="./js/import_footer.js"></script>
-  <script src="./js/header.js"></script>
 </html>
