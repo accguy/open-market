@@ -1,6 +1,8 @@
 const authToken = localStorage.getItem("authToken");
 const $cartItemList = document.querySelector(".cart-item-list");
 const $emptyCartSign = document.querySelector(".nothing-in-cart");
+const $cartModal = document.querySelector(".cart-modal");
+const $insertHere = document.querySelector(".insert-here");
 
 // url로 접근했을때 예외 처리
 if (!authToken) {
@@ -28,7 +30,7 @@ const getCart = async () => {
       } else {
         const cartItemList = data.results;
         $cartItemList.removeChild($emptyCartSign);
-        cartItemList.forEach(rederItem);
+        cartItemList.forEach(renderItem);
       }
     } else if (res.status === 401) {
       const errorData = await res.json();
@@ -47,12 +49,12 @@ const getCart = async () => {
 };
 
 // 상품 한개씩 렌더링 해주는 함수
-const rederItem = async (item) => {
+const renderItem = async (item) => {
   const $li = document.createElement("li");
-  const productInfo = await getProductInfo(item.product_id);
   $li.classList.add("cart-item");
+  const productInfo = await getProductInfo(item.product_id);
   $li.innerHTML = `
-  <input type="checkbox" name="" id="" />
+    <input type="checkbox" name="" id="" />
     <div class="img-info-container">
       <img src=${productInfo.image} alt="" />
       <div class="product-info">
@@ -98,5 +100,70 @@ const getProductInfo = async (id) => {
     console.log(errorData);
   }
 };
+
+let isModalOpened = false;
+// 장바구니 수량 조절 및 삭제 모달창 이벤트 리스너
+$cartItemList.addEventListener("click", (e) => {
+  const $target = e.target;
+  console.log($target);
+
+  if (!isModalOpened) {
+    if (
+      $target.className === "decrease-btn" ||
+      $target.className === "increase-btn"
+    ) {
+      isModalOpened = true;
+      $cartModal.classList.toggle("hidden");
+      $cartModal.classList.toggle("flex");
+      $insertHere.innerHTML = `
+      <div class="product-quantity-controls">
+        <button class="decrease-btn"></button>
+        <input
+          class="quantity-input"
+          type="number"
+          name="quantity"
+          value="1"
+          disabled
+        />
+        <button class="increase-btn"></button>
+      </div>
+      `;
+      $cartModal.style.gap = "26px";
+    } else if ($target.className === "delete-btn" || isModalOpened === 0) {
+      isModalOpened = true;
+      $cartModal.classList.toggle("hidden");
+      $cartModal.classList.toggle("flex");
+      $insertHere.innerHTML = `<p>상품을 삭제하시겠습니까?</p>`;
+      $cartModal.style.gap = "40px";
+    } else {
+      console.log("다른거 클릭됨");
+    }
+    console.log(isModalOpened);
+  } else if (isModalOpened) {
+    if (!e.target.contains($cartModal)) {
+      isModalOpened = false;
+      $cartModal.classList.toggle("hidden");
+      $cartModal.classList.remove("flex");
+    }
+  }
+});
+
+// 모달창 내부 클릭 시 클릭 이벤트가 window로 전파되지 않도록 막음: OK
+$cartModal.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+$cartItemList.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// 모달이 떴을때 모달 바깥쪽을 클릭했을 때 모달이 사라지는 이벤트
+window.addEventListener("click", (e) => {
+  if (isModalOpened) {
+    isModalOpened = false;
+    $cartModal.classList.toggle("hidden");
+    $cartModal.classList.remove("flex");
+    console.log("window");
+  }
+});
 
 getCart();
