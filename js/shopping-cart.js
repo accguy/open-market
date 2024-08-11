@@ -115,6 +115,7 @@ $cartItemList.addEventListener("click", (e) => {
       isModalOpened = true;
       $cartModal.classList.toggle("hidden");
       $cartModal.classList.toggle("flex");
+      document.body.classList.toggle("scroll-stop");
       $insertHere.innerHTML = `
       <div class="product-quantity-controls">
         <button class="decrease-btn"></button>
@@ -133,6 +134,7 @@ $cartItemList.addEventListener("click", (e) => {
       isModalOpened = true;
       $cartModal.classList.toggle("hidden");
       $cartModal.classList.toggle("flex");
+      document.body.classList.toggle("scroll-stop");
       $insertHere.innerHTML = `<p>상품을 삭제하시겠습니까?</p>`;
       $cartModal.style.gap = "40px";
     } else {
@@ -144,6 +146,7 @@ $cartItemList.addEventListener("click", (e) => {
       isModalOpened = false;
       $cartModal.classList.toggle("hidden");
       $cartModal.classList.remove("flex");
+      document.body.classList.toggle("scroll-stop");
     }
   }
 });
@@ -162,6 +165,7 @@ window.addEventListener("click", (e) => {
     isModalOpened = false;
     $cartModal.classList.toggle("hidden");
     $cartModal.classList.remove("flex");
+    document.body.classList.remove("scroll-stop");
     console.log("window");
   }
 });

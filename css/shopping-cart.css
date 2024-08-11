@@ -262,3 +262,8 @@ li.cart-item {
     color: #fff;
   }
 }
+
+/* 모달이 열렸을 때 body에 적용할 스타일 */
+body.scroll-stop {
+  overflow: hidden;
+}
