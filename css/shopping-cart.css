@@ -224,3 +224,46 @@ li.cart-item {
     right: 18px;
   }
 }
+
+/* 카트 모달 */
+.cart-modal {
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+  width: 360px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.cart-modal-btns {
+  display: flex;
+  gap: 10px;
+  button {
+    padding: 10px 34px;
+    border-radius: 5px;
+  }
+  .cancel-btn {
+    border: 1px solid #c4c4c4;
+    color: #767676;
+  }
+  .confirm-btn {
+    background-color: #21bf48;
+    color: #fff;
+  }
+}
+
+/* 모달이 열렸을 때 body에 적용할 스타일 */
+body.scroll-stop {
+  overflow: hidden;
+}
