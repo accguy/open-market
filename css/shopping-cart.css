@@ -177,7 +177,9 @@ li.cart-item {
     background-repeat: no-repeat;
     background-position: center;
   }
-  .quantity-input {
+  .quantity-input,
+  .quantity-input-list,
+  .quantity-input-modal {
     border: none;
     text-align: center;
     width: 50px;

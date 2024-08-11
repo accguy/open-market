@@ -16,6 +16,12 @@ $headerCartBtn.querySelector("span").style.color = "#21BF48";
 $headerCartBtn.querySelector("img").src =
   "./assets/icon-shopping-cart-clicked.svg";
 
+// product_id와 물품 개수를 저장하는 맵 객체
+const productQuantityMap = new Map();
+
+// product_id와 물품 개수를 저장하는 맵 객체
+const productStockMap = new Map();
+
 //  장바구니 데이타 불러오기(GET)
 const getCart = async () => {
   try {
@@ -37,6 +43,10 @@ const getCart = async () => {
         const cartItemList = data.results;
         $cartItemList.removeChild($emptyCartSign);
         cartItemList.forEach(renderItem);
+
+        cartItemList.forEach((x) =>
+          productQuantityMap.set(x.product_id, x.quantity)
+        );
       }
     } else if (res.status === 401) {
       const errorData = await res.json();
@@ -58,6 +68,7 @@ const getCart = async () => {
 const renderItem = async (item) => {
   const $li = document.createElement("li");
   $li.classList.add("cart-item");
+  $li.classList.add(`${item.product_id}`);
   const productInfo = await getProductInfo(item.product_id);
   $li.innerHTML = `
     <input type="checkbox" name="" id="" />
@@ -78,7 +89,7 @@ const renderItem = async (item) => {
       <div class="product-quantity-controls">
         <button class="decrease-btn"></button>
         <input
-          class="quantity-input"
+          class="quantity-input-list"
           type="number"
           name="quantity"
           value=${item.quantity}
@@ -100,6 +111,7 @@ const getProductInfo = async (id) => {
   const res = await fetch(`https://openmarket.weniv.co.kr/products/${id}`);
   if (res.ok) {
     const data = await res.json();
+    productStockMap.set(data.product_id, data.stock);
     return data;
   } else {
     const errorData = await res.json();
@@ -108,10 +120,15 @@ const getProductInfo = async (id) => {
 };
 
 let isModalOpened = false;
-// 장바구니 수량 조절 및 삭제 모달창 이벤트 리스너
+// 장바구니 수량 조절 모달 생성 및 소멸 이벤트 리스너
 $cartItemList.addEventListener("click", (e) => {
   const $target = e.target;
+  const cartItem = $target.parentNode.parentNode.parentNode;
+  const pid = Number(cartItem.classList[1]);
+
   console.log($target);
+  // 카트 리스트 클릭 시 이벤트가 window로 전파되지 않도록 막음
+  e.stopPropagation();
 
   if (!isModalOpened) {
     if (
@@ -122,27 +139,31 @@ $cartItemList.addEventListener("click", (e) => {
       $cartModal.classList.toggle("hidden");
       $cartModal.classList.toggle("flex");
       document.body.classList.toggle("scroll-stop");
+
       $insertHere.innerHTML = `
       <div class="product-quantity-controls">
         <button class="decrease-btn"></button>
         <input
-          class="quantity-input"
+          class="quantity-input-modal"
           type="number"
           name="quantity"
-          value="1"
+          value=${productQuantityMap.get(pid)}
           disabled
         />
         <button class="increase-btn"></button>
       </div>
       `;
+      $cartModal.querySelector(".product-quantity-controls").classList.add(pid); // 모달창 컨트롤에 pid를 넣어줌
       $cartModal.style.gap = "26px";
-    } else if ($target.className === "delete-btn" || isModalOpened === 0) {
+      document.querySelector(".confirm-btn").innerText = "수정";
+    } else if ($target.className === "delete-btn") {
       isModalOpened = true;
       $cartModal.classList.toggle("hidden");
       $cartModal.classList.toggle("flex");
       document.body.classList.toggle("scroll-stop");
       $insertHere.innerHTML = `<p>상품을 삭제하시겠습니까?</p>`;
       $cartModal.style.gap = "40px";
+      document.querySelector(".confirm-btn").innerText = "확인";
     } else {
       console.log("다른거 클릭됨");
     }
@@ -157,12 +178,35 @@ $cartItemList.addEventListener("click", (e) => {
   }
 });
 
-// 모달창 내부 클릭 시 클릭 이벤트가 window로 전파되지 않도록 막음: OK
+// 모달창 내부 버튼 이벤트 리스너
 $cartModal.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
-$cartItemList.addEventListener("click", (e) => {
-  e.stopPropagation();
+  const $target = e.target;
+  const $input = $target.parentNode.querySelector(".quantity-input-modal");
+
+  // 모달창 내부 클릭 시 클릭 이벤트가 window로 전파되지 않도록 막음
+  e.stopPropagation(productStockMap);
+
+  if ($target.className === "cancel-btn") {
+    isModalOpened = false;
+    $cartModal.classList.toggle("hidden");
+    $cartModal.classList.toggle("flex");
+    console.log("cancel");
+  } else if ($target.className === "decrease-btn") {
+    if ($input.value > 1) {
+      $input.value--;
+    }
+    console.log("-");
+  } else if ($target.className === "increase-btn") {
+    const controls = $target.closest(".product-quantity-controls");
+    const pid = Number(controls.classList[1]); // 이런식으로 클래스명을 선택하면 안될거같으니까 추후 수정
+
+    if ($input.value < productStockMap.get(pid)) {
+      $input.value++;
+    }
+    console.log("+");
+  } else if ($target.className === "confirm-btn") {
+    console.log("go");
+  }
 });
 
 // 모달이 떴을때 모달 바깥쪽을 클릭했을 때 모달이 사라지는 이벤트
