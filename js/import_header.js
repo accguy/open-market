@@ -3,7 +3,7 @@ document.querySelector("header").innerHTML = `
   <!-- <h1>HODU</h1> -->
   <div class="logo-search-container">
     <a class="header-logo" href="./index.html">
-      <img src="../assets/Logo-hodu.png" alt="HODU" />
+      <img src="./assets/Logo-hodu.png" alt="HODU" />
     </a>
     <div class="seach-bar">
       <input type="text" placeholder="상품을 검색해보세요!" />
@@ -13,7 +13,7 @@ document.querySelector("header").innerHTML = `
 
   <ul class="nav-bar">
     <li>
-      <a class="shoping-cart-btn" href="login.html">
+      <a class="shoping-cart-btn" href="shopping-cart.html">
         <img src="./assets/icon-shopping-cart.svg" alt="" /><span
           >장바구니</span
         >

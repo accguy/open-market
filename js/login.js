@@ -76,7 +76,8 @@ const login = async () => {
     if (res.ok) {
       const data = await res.json();
       localStorage.setItem("authToken", data.token);
-      history.back();
+      // history.back();
+      window.location.href = "index.html";
     } else if (res.status === 401) {
       const errorData = await res.json();
       console.log(errorData);
