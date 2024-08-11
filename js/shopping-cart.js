@@ -6,9 +6,15 @@ const $insertHere = document.querySelector(".insert-here");
 
 // url로 접근했을때 예외 처리
 if (!authToken) {
-  window.alert("비정상적인 접근방식입니다. 로그인 먼저 해주세요!");
+  window.alert("로그인이 필요한 서비스입니다.");
   window.location.href = "login.html";
 }
+
+// 헤더 장바구니 아이콘 색상변경
+const $headerCartBtn = document.querySelector(".shoping-cart-btn");
+$headerCartBtn.querySelector("span").style.color = "#21BF48";
+$headerCartBtn.querySelector("img").src =
+  "./assets/icon-shopping-cart-clicked.svg";
 
 //  장바구니 데이타 불러오기(GET)
 const getCart = async () => {

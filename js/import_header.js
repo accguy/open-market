@@ -13,7 +13,7 @@ document.querySelector("header").innerHTML = `
 
   <ul class="nav-bar">
     <li>
-      <a class="shoping-cart-btn" href="login.html">
+      <a class="shoping-cart-btn" href="shopping-cart.html">
         <img src="./assets/icon-shopping-cart.svg" alt="" /><span
           >장바구니</span
         >
